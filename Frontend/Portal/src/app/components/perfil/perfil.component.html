@@ -1,0 +1,33 @@
+<div class="container col-md-6 col-lg-4 rounded bg-light p-0">
+    <div class="bg-primary p-2 text-center text-light rounded-top">Troca de senha</div>
+    <div class="p-2">
+        <form [formGroup]="passwordChangeForm" (ngSubmit)="passwordChange()">
+            <div class="form-outline my-4">
+                <label class="form-label" for="oldPassword">Senha atual</label>
+                <input type="password" id="oldPassword" class="form-control" [class]="passwordChangeForm.get('oldPassword') | formControlValid"
+                    formControlName="oldPassword" />
+                    <div class="invalid-feedback">{{ passwordChangeForm.get('oldPassword')?.errors | formErrorMessage:'Senha atual' }}</div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="newPassword">Nova Senha</label>
+                <input type="password" id="newPassword" class="form-control" [class]="passwordChangeForm.get('newPassword') | formControlValid"
+                    formControlName="newPassword" />
+                    <div class="invalid-feedback">{{ passwordChangeForm.get('newPassword')?.errors | formErrorMessage:'Nova Senha' }}</div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="newPasswordMatch">Redigite a nova senha</label>
+                <input type="password" id="newPasswordMatch" class="form-control" [class]="passwordChangeForm.get('newPasswordMatch') | formControlValid"
+                    formControlName="newPasswordMatch" />
+                    <div class="invalid-feedback">{{ passwordChangeForm.get('newPasswordMatch')?.errors | formErrorMessage:'Redigite a nova senha' }}</div>
+            </div>
+
+            <div class="form-outline text-end">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

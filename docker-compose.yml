@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 0
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: cleanarchdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    healthcheck:
+      test: "exit 0"
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+    restart: always
+
+  backend.api:
+    container_name: api
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: "exit 0"
+    image: ${DOCKER_REGISTRY-}backendapi
+    build:
+      context: .
+      dockerfile: Backend/Backend.Api/Dockerfile
+    ports:
+     - "8881:80"
+    restart: always
+
+  #frontend.portal:
+  #  container_name: portal
+  #  depends_on:
+  #    backend.api:
+  #      condition: service_healthy
+  #  image: frontendapi
+  #  ports:
+  #   - "8080:80"
+  #  restart: always

@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-2" *ngIf="isLogged">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Portal</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="collapse.toggle()"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseExample">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="navbar-collapse"
+      id="navbarColor01"
+      #collapse="ngbCollapse"
+      [(ngbCollapse)]="isCollapsed">
+      <ul class="navbar-nav me-auto d-flex flex-grow-1">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/cliente']">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/procedimento']">Procedimentos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/agendamento']">Agendamentos</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/theme']">Theme</a>
+        </li> -->
+
+        <div class="btn-group dropstart ms-auto">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"
+              ngbDropdown
+              display="dynamic"
+              placement="bottom-end">
+              <a class="nav-link"
+                tabindex="0"
+                ngbDropdownToggle
+                id="navbarDropdown"
+                role="button">
+                {{user!.name}}
+              </a>
+              <div
+                ngbDropdownMenu
+                aria-labelledby="navbarDropdown"
+                class="dropdown-menu">
+                <!-- <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Admin</a> -->
+                <a ngbDropdownItem [routerLink]="['/perfil']">Perfil</a>
+                <a ngbDropdownItem href="#" (click)="logoff()">Sair</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>

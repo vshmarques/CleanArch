@@ -1,0 +1,102 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{66248AA6-C891-415B-AD89-D0619CE2C905}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{89B0F261-E1EF-423F-8446-25C1EAE9FA87}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4401EA37-D5DB-4532-9AAB-4624596BF712}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Api", "Backend\Backend.Api\Backend.Api.csproj", "{A1AC4E57-68B1-4DB2-A425-BCABBFE0773A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{61F15F58-CB1A-4A8E-9AF4-0C5B891F4257} = {61F15F58-CB1A-4A8E-9AF4-0C5B891F4257}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Application", "Backend\Backend.Application\Backend.Application.csproj", "{14959EDF-A81B-4B6E-AFDC-7891BCAC74D6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Domain", "Backend\Backend.Domain\Backend.Domain.csproj", "{085E37F7-F950-40CD-BDF1-F375AA9E6766}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infra.Data", "Backend\Backend.Infra.Data\Backend.Infra.Data.csproj", "{61F15F58-CB1A-4A8E-9AF4-0C5B891F4257}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infra.IoC", "Backend\Backend.Infra.IoC\Backend.Infra.IoC.csproj", "{ADF44BAE-859A-4AE6-B387-5015D846BB07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{085E37F7-F950-40CD-BDF1-F375AA9E6766} = {085E37F7-F950-40CD-BDF1-F375AA9E6766}
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Portal", "Frontend\Portal\", "{4FF07A6E-4FEB-474C-A5CC-EEAE1BEC81CC}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50103"
+		Debug.AspNetCompiler.PhysicalPath = "Frontend\Portal\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50103\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50103"
+		Release.AspNetCompiler.PhysicalPath = "Frontend\Portal\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50103\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50103"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3920A333-2402-4A4F-A37D-B063B422710D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4401EA37-D5DB-4532-9AAB-4624596BF712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4401EA37-D5DB-4532-9AAB-4624596BF712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4401EA37-D5DB-4532-9AAB-4624596BF712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4401EA37-D5DB-4532-9AAB-4624596BF712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1AC4E57-68B1-4DB2-A425-BCABBFE0773A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AC4E57-68B1-4DB2-A425-BCABBFE0773A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AC4E57-68B1-4DB2-A425-BCABBFE0773A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AC4E57-68B1-4DB2-A425-BCABBFE0773A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14959EDF-A81B-4B6E-AFDC-7891BCAC74D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14959EDF-A81B-4B6E-AFDC-7891BCAC74D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14959EDF-A81B-4B6E-AFDC-7891BCAC74D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14959EDF-A81B-4B6E-AFDC-7891BCAC74D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{085E37F7-F950-40CD-BDF1-F375AA9E6766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{085E37F7-F950-40CD-BDF1-F375AA9E6766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{085E37F7-F950-40CD-BDF1-F375AA9E6766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{085E37F7-F950-40CD-BDF1-F375AA9E6766}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61F15F58-CB1A-4A8E-9AF4-0C5B891F4257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61F15F58-CB1A-4A8E-9AF4-0C5B891F4257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61F15F58-CB1A-4A8E-9AF4-0C5B891F4257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61F15F58-CB1A-4A8E-9AF4-0C5B891F4257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF44BAE-859A-4AE6-B387-5015D846BB07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF44BAE-859A-4AE6-B387-5015D846BB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF44BAE-859A-4AE6-B387-5015D846BB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF44BAE-859A-4AE6-B387-5015D846BB07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FF07A6E-4FEB-474C-A5CC-EEAE1BEC81CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF07A6E-4FEB-474C-A5CC-EEAE1BEC81CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF07A6E-4FEB-474C-A5CC-EEAE1BEC81CC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF07A6E-4FEB-474C-A5CC-EEAE1BEC81CC}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1AC4E57-68B1-4DB2-A425-BCABBFE0773A} = {66248AA6-C891-415B-AD89-D0619CE2C905}
+		{14959EDF-A81B-4B6E-AFDC-7891BCAC74D6} = {66248AA6-C891-415B-AD89-D0619CE2C905}
+		{085E37F7-F950-40CD-BDF1-F375AA9E6766} = {66248AA6-C891-415B-AD89-D0619CE2C905}
+		{61F15F58-CB1A-4A8E-9AF4-0C5B891F4257} = {66248AA6-C891-415B-AD89-D0619CE2C905}
+		{ADF44BAE-859A-4AE6-B387-5015D846BB07} = {66248AA6-C891-415B-AD89-D0619CE2C905}
+		{4FF07A6E-4FEB-474C-A5CC-EEAE1BEC81CC} = {89B0F261-E1EF-423F-8446-25C1EAE9FA87}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D024C689-3F53-48C4-A896-5902F3643A37}
+	EndGlobalSection
+EndGlobal

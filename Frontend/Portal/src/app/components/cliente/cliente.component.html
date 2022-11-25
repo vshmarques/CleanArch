@@ -1,0 +1,63 @@
+<div class="my-5">
+    <form [formGroup]="clienteForm">
+      <div class="mb-3">
+        <label for="formClienteNome" class="form-label">Nome</label>
+        <input type="text" class="form-control" [class]="clienteForm.get('nome') | formControlValid" id="formClienteNome" formControlName="nome">
+        <div class="invalid-feedback">{{ clienteForm.get('nome')?.errors | formErrorMessage:'Nome' }}</div>
+      </div>
+      <div class="mb-3">
+        <label for="formClienteCpf" class="form-label">Cpf</label>
+        <input type="text" class="form-control" [class]="clienteForm.get('cpf') | formControlValid" id="formClienteCpf" formControlName="cpf" mask="000.000.000-00">
+        <div class="invalid-feedback">{{ clienteForm.get('cpf')?.errors | formErrorMessage:'Cpf' }}</div>
+      </div>
+      <div class="mb-3">
+        <label for="formClienteEmail" class="form-label">Email</label>
+        <input type="text" class="form-control" [class]="clienteForm.get('email') | formControlValid" id="formClienteEmail" formControlName="email">
+        <div class="invalid-feedback">{{ clienteForm.get('email')?.errors | formErrorMessage:'Email' }}</div>
+      </div>
+      <div class="mb-3">
+        <label for="formClienteTelefone" class="form-label">Telefone</label>
+        <input type="text" class="form-control" [class]="clienteForm.get('telefone') | formControlValid" id="formClienteTelefone" formControlName="telefone" mask="(00) 00000-0000">
+        <div class="invalid-feedback">{{ clienteForm.get('telefone')?.errors | formErrorMessage:'Telefone' }}</div>
+      </div>
+      <div class="text-end">
+        <button type="reset" class="btn btn-info me-2" (click)="formEmpty()">Limpar</button>
+        <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+      </div>
+    </form>
+  
+    <!-- <div style="margin-top: 20px" *ngIf="clienteForm">
+      <div>Detalhes do form</div>
+      <pre>Form válido: {{ clienteForm.valid }}</pre>
+      <pre>Valores: <br>{{ clienteForm.value | json }}</pre>
+    </div> -->
+  
+  </div>
+  
+<div style="overflow-x: scroll;">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Cpf</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telefone</th>
+        <th scope="col" class="text-end">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="align-middle" *ngFor="let cliente of clientes">
+        <td>{{ cliente.id }}</td>
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.cpf }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.telefone?.toString() ?? ''| mask:'(00) 00000-0000' }}</td>
+        <td class="text-end" style="min-width: 110px;">
+          <fa-icon [icon]="faPen" (click)="edit(cliente.id!)" class="btn btn-primary me-2"></fa-icon>
+          <fa-icon [icon]="faTrash" (click)="delete(cliente.id!)" class="btn btn-danger"></fa-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

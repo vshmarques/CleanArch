@@ -1,0 +1,147 @@
+<div class="my-5">
+  <form [formGroup]="agendamentoForm">
+    <div class="mb-3">
+      <label for="formAgendamentoCliente" class="form-label">Cliente</label>
+      <select class="form-select" [class]="agendamentoForm.get('clienteId') | formControlValid"
+        id="formAgendamentoCliente" formControlName="clienteId">
+        <option></option>
+        <option [value]="cliente.id" *ngFor="let cliente of clientes">{{ cliente.nome }}</option>
+      </select>
+      <div class="invalid-feedback">
+        {{ agendamentoForm.get("clienteId")?.errors | formErrorMessage: "Cliente" }}
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="formAgendamentoProcedimento" class="form-label">Procedimento</label>
+      <select class="form-select" [class]="agendamentoForm.get('procedimentoId') | formControlValid"
+        id="formAgendamentoProcedimento" formControlName="procedimentoId" (change)="procedimentoChanged()">
+        <option></option>
+        <option [value]="procedimento.id" *ngFor="let procedimento of procedimentos">{{ procedimento.nome }}</option>
+      </select>
+      <div class="invalid-feedback">
+        {{ agendamentoForm.get("procedimentoId")?.errors | formErrorMessage: "Procedimento" }}
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="formDataInicio" class="form-label">Data Início</label>
+      <app-datetime-picker formControlName="dataInicio" name="formDataInicio"
+        [class]="agendamentoForm.get('dataInicio') | formControlValid"></app-datetime-picker>
+      <div class="invalid-feedback">
+        {{ agendamentoForm.get("dataInicio")?.errors | formErrorMessage: "Data início" }}
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="formAgendamentoDataFim" class="form-label">Data Fim</label>
+      <app-datetime-picker formControlName="dataFim" name="formAgendamentoDataFim"
+        [class]="agendamentoForm.get('dataFim') | formControlValid"></app-datetime-picker>
+      <div class="invalid-feedback">
+        {{ agendamentoForm.get("dataFim")?.errors | formErrorMessage: "Data fim" }}
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="formagendamentoValor" class="form-label">Valor</label>
+      <input type="text" class="form-control" [class]="agendamentoForm.get('valor') | formControlValid"
+        id="formagendamentoValor" formControlName="valor" mask="separator.2" prefix="R$ " [thousandSeparator]="'.'"
+        [decimalMarker]="','" [dropSpecialCharacters]="true" />
+      <div class="invalid-feedback">
+        {{ agendamentoForm.get("valor")?.errors | formErrorMessage: "Valor" }}
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="formagendamentoCustoMaterial" class="form-label">Custo Material</label>
+      <input type="text" class="form-control" [class]="agendamentoForm.get('custoMaterial') | formControlValid"
+        id="formagendamentoCustoMaterial" formControlName="custoMaterial" mask="separator.2" prefix="R$ "
+        [thousandSeparator]="'.'" [decimalMarker]="','" [dropSpecialCharacters]="true" />
+      <div class="invalid-feedback">
+        {{ agendamentoForm.get("custoMaterial")?.errors | formErrorMessage: "Custo Material" }}
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="formagendamentoCustoFixo" class="form-label">Custo Fixo</label>
+      <input type="text" class="form-control" [class]="agendamentoForm.get('custoFixo') | formControlValid"
+        id="formagendamentoCustoFixo" formControlName="custoFixo" mask="separator.2" prefix="R$ "
+        [thousandSeparator]="'.'" [decimalMarker]="','" [dropSpecialCharacters]="true" />
+      <div class="invalid-feedback">
+        {{ agendamentoForm.get("custoFixo")?.errors | formErrorMessage: "Custo Fixo" }}
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="formAgendamentoConfirmado" class="form-label">Confirmado</label>
+      <div class="form-check form-switch fs-4">
+        <input class="form-check-input" type="checkbox" id="formAgendamentoConfirmado" formControlName="confirmado">
+      </div>
+      <div class="invalid-feedback">
+        {{ agendamentoForm.get("confirmado")?.errors | formErrorMessage: "Confirmado" }}
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="formAgendamentoPago" class="form-label">Pago</label>
+      <div class="form-check form-switch fs-4">
+        <input class="form-check-input" type="checkbox" id="formAgendamentoPago" formControlName="pago">
+      </div>
+      <div class="invalid-feedback">
+        {{ agendamentoForm.get("pago")?.errors | formErrorMessage: "Pago" }}
+      </div>
+    </div>
+    
+    <div class="text-end">
+      <button type="reset" class="btn btn-info me-2" (click)="formEmpty()">
+        Limpar
+      </button>
+      <button type="submit" class="btn btn-primary" (click)="save()">
+        Salvar
+      </button>
+    </div>
+  </form>
+
+  <!-- <div style="margin-top: 20px" *ngIf="agendamentoForm">
+    <div>Detalhes do form</div>
+    <pre>Form válido: {{ agendamentoForm.valid }}</pre>
+    <pre>Valores: <br>{{ agendamentoForm.value | json }}</pre>
+  </div> -->
+
+</div>
+
+<div style="overflow-x: scroll;">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Procedimento</th>
+        <th scope="col">Data</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Custo Material</th>
+        <th scope="col">Custo Fixo</th>
+        <th scope="col">Confirmado</th>
+        <th scope="col">Pago</th>
+        <th scope="col" class="text-end">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="align-middle" *ngFor="let agendamento of agendamentos">
+        <td>{{ agendamento.id }}</td>
+        <td>{{ agendamento.cliente?.nome }}</td>
+        <td>{{ agendamento.procedimento?.nome }}</td>
+        <td>{{ agendamento.dataInicio | date:"dd 'de' MMM" }}</td>
+        <td>{{ agendamento.valor | currency }}</td>
+        <td>{{ agendamento.custoMaterial | currency }}</td>
+        <td>{{ agendamento.custoFixo | currency }}</td>
+        <td><input type="checkbox" style="width: 1.25rem; height: 1.25rem;" [checked]="agendamento.confirmado"></td>
+        <td><input type="checkbox" style="width: 1.25rem; height: 1.25rem;" [checked]="agendamento.pago"></td>
+        <td class="text-end" style="min-width: 110px;">
+          <fa-icon [icon]="faPen" (click)="edit(agendamento.id!)" class="btn btn-primary me-2"></fa-icon>
+          <fa-icon [icon]="faTrash" (click)="delete(agendamento.id!)" class="btn btn-danger"></fa-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

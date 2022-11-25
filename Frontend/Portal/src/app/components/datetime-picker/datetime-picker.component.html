@@ -1,0 +1,40 @@
+<div class="input-group">
+  <input
+    [ngClass]="ngControl.valid ? 'ng-valid' : 'ng-invalid'"
+    [class]="ngControl | formControlValid"
+    class="form-control"
+    (blur)="inputBlur($event)"
+    [ngModel]="dateString | date: inputDatetimeFormat"
+    (change)="onInputChange($event)"
+    [disabled]="disabled"/>
+    <button
+      class="btn btn-light"
+      [ngbPopover]="calendarContent"
+      [disabled]="disabled"
+      type="button">
+      <fa-icon [icon]="faCalendar"></fa-icon>
+    </button>
+</div>
+
+<ng-template #calendarContent>
+  <div class="d-flex flex-column align-items-center">
+    <ngb-datepicker
+      id="dp"
+      #dp
+      name="datepicker"
+      [firstDayOfWeek]="0"
+      [ngModel]="datetime"
+      (ngModelChange)="onDateChange($event, dp)"></ngb-datepicker>
+  
+      <ngb-timepicker
+        #tp
+        name="timepicker"
+        [ngModel]="datetime"
+        (ngModelChange)="onTimeChange($event)"
+        [seconds]="seconds"
+        [hourStep]="hourStep"
+        [minuteStep]="minuteStep"
+        [secondStep]="secondStep">
+      </ngb-timepicker>
+  </div>
+</ng-template>

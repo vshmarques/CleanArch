@@ -1,0 +1,109 @@
+<div class="my-5">
+  <form [formGroup]="procedimentoForm">
+    <div class="mb-3">
+      <label for="formprocedimentoNome" class="form-label">Procedimento</label>
+      <input
+        type="text"
+        class="form-control"
+        [class]="procedimentoForm.get('nome') | formControlValid"
+        id="formprocedimentoNome"
+        formControlName="nome"/>
+      <div class="invalid-feedback">
+        {{ procedimentoForm.get("nome")?.errors | formErrorMessage: "Procedimento" }}
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="formprocedimentoValor" class="form-label">Valor</label>
+      <input
+        type="text"
+        class="form-control"
+        [class]="procedimentoForm.get('valor') | formControlValid"
+        id="formprocedimentoValor"
+        formControlName="valor"
+        mask="separator.2"
+        prefix="R$ "
+        [thousandSeparator]="'.'"
+        [decimalMarker]="','"
+        [dropSpecialCharacters]="true"/>
+      <div class="invalid-feedback">
+        {{ procedimentoForm.get("valor")?.errors | formErrorMessage: "Valor" }}
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="formprocedimentoCustoMaterial" class="form-label">Custo Material</label>
+      <input
+        type="text"
+        class="form-control"
+        [class]="procedimentoForm.get('custoMaterial') | formControlValid"
+        id="formprocedimentoCustoMaterial"
+        formControlName="custoMaterial"
+        mask="separator.2"
+        prefix="R$ "
+        [thousandSeparator]="'.'"
+        [decimalMarker]="','"
+        [dropSpecialCharacters]="true"/>
+      <div class="invalid-feedback">
+        {{ procedimentoForm.get("custoMaterial")?.errors | formErrorMessage: "Custo Material" }}
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="formprocedimentoCustoFixo" class="form-label">Custo Fixo</label>
+      <input
+        type="text"
+        class="form-control"
+        [class]="procedimentoForm.get('custoFixo') | formControlValid"
+        id="formprocedimentoCustoFixo"
+        formControlName="custoFixo"
+        mask="separator.2"
+        prefix="R$ "
+        [thousandSeparator]="'.'"
+        [decimalMarker]="','"
+        [dropSpecialCharacters]="true"/>
+      <div class="invalid-feedback">
+        {{ procedimentoForm.get("custoFixo")?.errors | formErrorMessage: "Custo Fixo" }}
+      </div>
+    </div>
+    <div class="text-end">
+      <button type="reset" class="btn btn-info me-2" (click)="formEmpty()">
+        Limpar
+      </button>
+      <button type="submit" class="btn btn-primary" (click)="save()">
+        Salvar
+      </button>
+    </div>
+  </form>
+
+  <!-- <div style="margin-top: 20px" *ngIf="procedimentoForm">
+    <div>Detalhes do form</div>
+    <pre>Form válido: {{ procedimentoForm.valid }}</pre>
+    <pre>Valores: <br>{{ procedimentoForm.value | json }}</pre>
+  </div> -->
+</div>
+
+<div style="overflow-x: scroll;">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Procedimento</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Custo Material</th>
+        <th scope="col">Custo Fixo</th>
+        <th scope="col" class="text-end">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="align-middle" *ngFor="let procedimento of procedimentos">
+        <td>{{ procedimento.id }}</td>
+        <td>{{ procedimento.nome }}</td>
+        <td>{{ procedimento.valor | currency }}</td>
+        <td>{{ procedimento.custoMaterial | currency }}</td>
+        <td>{{ procedimento.custoFixo | currency }}</td>
+        <td class="text-end" style="min-width: 110px;">
+          <fa-icon [icon]="faPen" (click)="edit(procedimento.id!)" class="btn btn-primary me-2"></fa-icon>
+          <fa-icon [icon]="faTrash" (click)="delete(procedimento.id!)" class="btn btn-danger"></fa-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

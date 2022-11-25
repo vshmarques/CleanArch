@@ -1,0 +1,39 @@
+.cal-header {
+    background-color: var(--bs-primary);
+    color: var(--bs-light);
+}
+
+.cal-header:hover {
+    pointer-events: none;
+    background-color: var(--bs-primary) !important;
+    color: var(--bs-light) !important;
+}
+
+.cal-today:not(.cal-in-month) {
+    background-color: var(--bs-primary) !important;
+    color: var(--bs-light) !important;
+}
+
+.monthEvent {
+    background-color: #d1e8ff;
+    border-color: #1e90ff;
+    border: 1px solid;
+    color: #1e90ff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 0px 4px 3px 4px;
+    padding: 0 5px;
+    line-height: 25px;
+    font-size: x-small;
+    display: inline-block;
+}
+
+.monthEventsContainer {
+    display: grid;
+    grid-template-columns: auto;
+  }
