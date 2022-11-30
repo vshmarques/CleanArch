@@ -28,9 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/angular-calendar/css/angular-calendar.css",
-              "src/styles.scss",
-              "node_modules/bootswatch/dist/spacelab/bootstrap.min.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -39,8 +37,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
