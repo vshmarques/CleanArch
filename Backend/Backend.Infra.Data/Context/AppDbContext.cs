@@ -28,7 +28,8 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
 {
     public AppDbContext CreateDbContext(string[] args)
     {
-        var connectionString = "server=localhost;port=3306;userid=admin;password=admin;database=cleanarchdb;";
+        //var connectionString = "server=localhost;port=3306;userid=admin;password=admin;database=cleanarchdb;";
+        var connectionString = "Server=/cloudsql/INSTANCE_CONNECTION_NAME ;User ID=DB_USER;Password=DB_PASS;Database=DB_NAME;Port=3306;SSL Mode=None;Pooling=True;Connection Protocol=Unix";
         var serverVersion = ServerVersion.AutoDetect(connectionString);
 
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
