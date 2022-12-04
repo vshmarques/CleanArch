@@ -20,7 +20,7 @@ namespace Backend.Infra.IoC
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("MySqlConn");
+            var connectionString = configuration.GetConnectionString("CloudSqlConn");
             var serverVersion = ServerVersion.AutoDetect(connectionString);
 
             services.AddDbContext<AppDbContext>(options =>
@@ -29,7 +29,7 @@ namespace Backend.Infra.IoC
             });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            
+
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddTransient<IClienteService, ClienteService>();

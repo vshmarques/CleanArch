@@ -26,9 +26,7 @@ services:
     healthcheck:
       test: "exit 0"
     image: ${DOCKER_REGISTRY-}backendapi
-    build:
-      context: .
-      dockerfile: Backend/Backend.Api/Dockerfile
+    build: ./Backend/
     ports:
      - "8881:80"
     restart: always
