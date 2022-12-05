@@ -20,7 +20,10 @@ namespace Backend.Infra.IoC
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("CloudSqlConn");
+            var connectionName = "CloudSqlConn";
+            connectionName = "MySqlConn";
+                
+            var connectionString = configuration.GetConnectionString(connectionName);
             var serverVersion = ServerVersion.AutoDetect(connectionString);
 
             services.AddDbContext<AppDbContext>(options =>
