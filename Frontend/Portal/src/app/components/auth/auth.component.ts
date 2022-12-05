@@ -24,8 +24,8 @@ export class AuthComponent implements OnInit {
       this.router.navigateByUrl('')
       
     this.authForm = this.formBuilder.group({
-      username: ['admin@gmail.com', [Validators.required, Validators.email]],
-      password: ['123456', Validators.required],
+      username: [null, [Validators.required, Validators.email]],
+      password: [null, Validators.required],
     });
   }
 

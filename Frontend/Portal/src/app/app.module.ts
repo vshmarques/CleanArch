@@ -1,5 +1,5 @@
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule, isDevMode } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +26,7 @@ import { AgendamentoComponent } from './components/agendamento/agendamento.compo
 import { DateTimePickerComponent } from './components/datetime-picker/datetime-picker.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 registerLocaleData(localePt);
 
@@ -57,6 +58,9 @@ registerLocaleData(localePt);
     NgbModule,
     NgxMaskModule.forRoot(),
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      registrationStrategy: 'registerWhenStable:15000'
+    }),
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt'},

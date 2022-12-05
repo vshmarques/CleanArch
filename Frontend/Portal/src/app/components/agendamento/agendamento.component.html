@@ -119,8 +119,8 @@
         <th scope="col">Procedimento</th>
         <th scope="col">Data</th>
         <th scope="col">Valor</th>
-        <th scope="col">Custo Material</th>
-        <th scope="col">Custo Fixo</th>
+        <!-- <th scope="col">Custo Material</th>
+        <th scope="col">Custo Fixo</th> -->
         <th scope="col">Confirmado</th>
         <th scope="col">Pago</th>
         <th scope="col" class="text-end">Ações</th>
@@ -133,8 +133,8 @@
         <td>{{ agendamento.procedimento?.nome }}</td>
         <td>{{ agendamento.dataInicio | date:"dd 'de' MMM" }}</td>
         <td>{{ agendamento.valor | currency }}</td>
-        <td>{{ agendamento.custoMaterial | currency }}</td>
-        <td>{{ agendamento.custoFixo | currency }}</td>
+        <!-- <td>{{ agendamento.custoMaterial | currency }}</td>
+        <td>{{ agendamento.custoFixo | currency }}</td> -->
         <td><input type="checkbox" style="width: 1.25rem; height: 1.25rem;" [checked]="agendamento.confirmado"></td>
         <td><input type="checkbox" style="width: 1.25rem; height: 1.25rem;" [checked]="agendamento.pago"></td>
         <td class="text-end" style="min-width: 110px;">
